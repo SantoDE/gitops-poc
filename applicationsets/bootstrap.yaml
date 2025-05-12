@@ -1,0 +1,25 @@
+# applicationsets/bootstrap-applicationset.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: bootstrap-core
+  namespace: argocd
+spec:
+  generators:
+    - clusters: {}
+  template:
+    metadata:
+      name: bootstrap-{{name}}
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/SantoDE/gitops-poc
+        targetRevision: HEAD
+        path: apps/base/{{name}}
+      destination:
+        server: '{{server}}'
+        namespace: argocd
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
