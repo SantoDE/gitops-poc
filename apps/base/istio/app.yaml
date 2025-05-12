@@ -32,7 +32,7 @@ spec:
             enabled: true
             type: ClusterIP
   destination:
-    server: https://<cluster-api>
+    server: '{{server}}'
     namespace: istio-system
   syncPolicy:
     automated:
