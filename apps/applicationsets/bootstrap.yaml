@@ -1,4 +1,4 @@
-# applicationsets/bootstrap-applicationset.yaml
+# apps/applicationsets/bootstrap.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -15,7 +15,7 @@ spec:
       source:
         repoURL: https://github.com/SantoDE/gitops-poc
         targetRevision: HEAD
-        path: apps/base/{{name}}
+        path: apps/base         # shared path!
       destination:
         server: '{{server}}'
         namespace: argocd
